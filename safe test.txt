@@ -1,0 +1,89 @@
+{
+                        char[] numerosRomanos = { 'I', 'V', 'X', 'L', 'C', 'D', 'M' };
+                        int[] comparadorDeNumeros = { 1, 5, 10, 50, 100, 500, 1000 };
+
+
+                        char[] charArray = a.ToCharArray();
+
+                        var valorFinal = 0;
+                        for (int i = 0; i < charArray.Length; i++)
+                        {
+
+                            for (int j = 0; j < numerosRomanos.Length; j++)
+                            {
+                                if (charArray[i] == numerosRomanos[j])
+                                {
+                                    if (charArray[i] == 'C' && (i + 1 < charArray.Length))
+                                    {
+                                        if (charArray[i + 1] == 'M')
+                                        {
+                                            valorFinal += comparadorDeNumeros[6] - comparadorDeNumeros[j];
+
+                                            i++;
+                                        }
+                                        else if (charArray[i + 1] == 'D')
+                                        {
+                                            valorFinal += comparadorDeNumeros[5] - comparadorDeNumeros[j];
+
+                                            i++;
+                                        }
+                                        else
+                                        {
+                                            valorFinal += comparadorDeNumeros[j];
+                                        }
+                                    }
+                                    else if (charArray[i] == 'X' && (i + 1 < charArray.Length))
+                                    {
+                                        if (charArray[i + 1] == 'L')
+                                        {
+                                            valorFinal += comparadorDeNumeros[3] - comparadorDeNumeros[j];
+
+                                            i++;
+                                        }
+                                        else if (charArray[i + 1] == 'C' && (i + 1 < charArray.Length))
+                                        {
+                                            valorFinal += comparadorDeNumeros[4] - comparadorDeNumeros[j];
+
+                                            i++;
+                                        }
+                                        else
+                                        {
+                                            valorFinal += comparadorDeNumeros[j];
+
+                                        }
+                                    }
+                                    else if (charArray[i] == 'I')
+                                    {
+                                        if (charArray[i + 1] == 'V')
+                                        {
+                                            valorFinal += comparadorDeNumeros[1] - comparadorDeNumeros[j];
+
+                                            i++;
+                                        }
+                                        else if (charArray[i + 1] == 'X')
+                                        {
+                                            valorFinal += comparadorDeNumeros[2] - comparadorDeNumeros[j];
+
+                                            i++;
+                                        }
+                                        else
+                                        {
+                                            valorFinal += comparadorDeNumeros[j];
+
+                                        }
+                                    }
+                                    else
+                                    {
+                                        valorFinal += comparadorDeNumeros[j];
+                                    }
+                                    break;
+                                }
+
+
+                            }
+                        }
+
+                        Console.Write(valorFinal + "\n");
+                        Console.ReadLine();
+                        return valorFinal;
+                    }
